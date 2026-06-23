@@ -7,7 +7,8 @@ class Account:
         self.account_number: int = random.randint(1000000000, 9999999999)
         self.__balance: int = 0
         self.account_status: str = "active"
-        self.created_at: str = datetime.now().strftime("%d %m %y")
+        self.account_type: str = "saving"
+        self.created_at: str = datetime.now().strftime("%d-%m-%Y")
 
     def deposite(self, amount: int):
         pass
