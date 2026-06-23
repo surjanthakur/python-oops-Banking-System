@@ -15,20 +15,20 @@ class Bank:
 
     def add_customer(self, customer: Customer):
         """
-        Docstring for add_customer
+        Add a new customer to the bank.
 
-        :param self: accept's current Customer object that is named self
-        :param customer: accept's a customer object
+        :param customer: Customer instance to add.
+        :return: Confirmation message string.
         """
         self.customers.add(customer)
         return "new customer added ✅"
 
     def remove_customer(self, customer_id: str):
         """
-        Docstring for remove_customer
+        Remove a customer by their ID.
 
-        :param self: accept's current Customer object that is named self
-        :param customer_id: accept's a customer_id string
+        :param customer_id: ID of the customer to remove.
+        :return: Success or error message string.
         """
 
         cstmr = next((c for c in self.customers if c.customer_id == customer_id), None)
@@ -39,16 +39,24 @@ class Bank:
 
     def add_employee(self, employee: Employee) -> str:
         """
-        Docstring for add_employee
+        Add a new employee to the bank.
 
-        :param self: accept's current Employee object that is named self
-        :param employee: accept's employee object
+        :param employee: Employee instance to add.
+        :return: Confirmation message string.
         """
 
         self.employees.add(employee)
         return "new employee added ✅"
 
     def create_account(self, customer_name: str, customer_id: str, ac_type: str) -> str:
+        """
+        Create a new account for a customer if one doesn't already exist.
+
+        :param customer_name: Name of the account owner.
+        :param customer_id: ID of the account owner.
+        :param ac_type: Account type (e.g. 'savings', 'current').
+        :return: Account creation message or error string.
+        """
 
         account = next(
             (
@@ -68,6 +76,13 @@ class Bank:
         return "account already exist's ❌"
 
     def remove_account(self, customer_id: str, account_no: int) -> str:
+        """
+        Remove an account belonging to a customer.
+
+        :param customer_id: Owner's customer ID.
+        :param account_no: Account number to remove.
+        :return: Success or error message string.
+        """
         account = next(
             (
                 a
@@ -82,6 +97,13 @@ class Bank:
         return "account removed ✅"
 
     def view_account(self, customer_id: str, account_no: int) -> Account:
+        """
+        Return account information for a given customer and account number.
+
+        :param customer_id: Owner's customer ID.
+        :param account_no: Account number to view.
+        :return: `Account` instance if found, otherwise an error message string.
+        """
         account = next(
             (
                 a
