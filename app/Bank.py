@@ -8,10 +8,10 @@ class Bank:
     bank_name: str = "SBI-limited"
 
     def __init__(self):
-        self.customers: set[Customer] = {}
-        self.employees: set[Employee] = {}
-        self.accounts: set[Account] = {}
-        self.transactions: set[Transaction] = {}
+        self.customers: set[Customer] = set()
+        self.employees: set[Employee] = set()
+        self.accounts: set[Account] = set()
+        self.transactions: set[Transaction] = set()
 
     def add_customer(self, customer: Customer) -> str:
         """

@@ -10,7 +10,7 @@ class Account:
         self.owner: str = owner
         self.owner_id: str = owner_id
         self.__balance: int = 0
-        self.__transactions: set[Transaction] = {}
+        self.__transactions: set[Transaction] = set()
         self.account_status: str = "active"
         self.account_type: str = account_type
         self.created_at: str = datetime.now().strftime("%d-%m-%Y")
@@ -27,6 +27,7 @@ class Account:
             "Deposite",
             self.__balance,
         )
+        self.__transactions.add(new_transaction)
 
         return new_transaction.generate_receipt()
 
@@ -42,6 +43,7 @@ class Account:
             "Widraw",
             self.__balance,
         )
+        self.__transactions.add(new_transaction)
 
         return new_transaction.generate_receipt()
 
