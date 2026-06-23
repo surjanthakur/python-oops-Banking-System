@@ -21,7 +21,7 @@ class Bank:
         :param customer: accept's a customer object
         """
         self.customers.add(customer)
-        return "new customer added"
+        return "new customer added ✅"
 
     def remove_customer(self, customer_id: str):
         """
@@ -33,9 +33,9 @@ class Bank:
 
         cstmr = next((c for c in self.customers if c.customer_id == customer_id), None)
         if cstmr is None:
-            return "wrong customer check again"
+            return "wrong customer check again ❌"
         self.customers.remove(cstmr)
-        return "customer deleted successfully"
+        return "customer deleted successfully ✅"
 
     def add_employee(self, employee: Employee):
         """
@@ -46,19 +46,31 @@ class Bank:
         """
 
         self.employees.add(employee)
-        return "new employee added"
+        return "new employee added ✅"
 
-    def create_account(self, customer: Customer):
-        # check if customer exists or not
-        # check if account exists with the customer id
-        # create a new Account object
-        # update the accounts set
-        # return message
-        pass
+    def create_account(self, customer_name: str, customer_id: str, ac_type: str):
+        normalized_name = customer_name.strip().lower()
+
+        account = next(
+            (
+                a
+                for a in self.accounts
+                if a.owner.strip().lower() == normalized_name
+                and a.owner_id == customer_id
+            ),
+            None,
+        )
+        if account is None:
+            new_account = Account(customer_name, customer_id, ac_type)
+            self.accounts.add(new_account)
+            return f"new account is created✅  AC-NO: {new_account.account_number}"
+
+        return "account already exist's ❌"
 
     def remove_account(self, customer_id: str, account_no: int):
         # verify the customer id and the account number match in the accounts object
-        # if match delete account else return error
+        # if match delete account else:
+        #  return error
         pass
 
     def view_account(self, customer_id: str, account_no: int):
