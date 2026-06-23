@@ -1,5 +1,10 @@
-class Customer:
-    """Bank customer with associated accounts."""
+from Person import Person
+
+from uuid import uuid4
+
+
+class Customer(Person):
 
     def __init__(self):
-        pass
+        self.customer_id = str(uuid4())
+        self.accounts = {}
