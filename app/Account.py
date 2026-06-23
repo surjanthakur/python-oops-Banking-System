@@ -5,6 +5,7 @@ import random
 class Account:
     def __init__(self):
         self.account_number: int = random.randint(1000000000, 9999999999)
+        self.owner: str = "User"
         self.__balance: int = 0
         self.account_status: str = "active"
         self.account_type: str = "saving"

@@ -5,7 +5,10 @@ from datetime import datetime
 class Transaction:
     def __init__(self):
         self.transaction_id = str(uuid4())
-        self.amount: int
+        self.amount: int = 0
         self.account_type: str = "saving"
         self.transaction_type: str
         self.transaction_date: str = datetime.now().strftime("%d-%m-%Y")
+
+    def generate_receipt():
+        pass
