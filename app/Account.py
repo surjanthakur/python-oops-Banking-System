@@ -1,6 +1,8 @@
 from datetime import datetime
 import random
 
+from Transaction import Transaction
+
 
 class Account:
     def __init__(self, owner: str, owner_id: str, account_type: str):
@@ -8,15 +10,46 @@ class Account:
         self.owner: str = owner
         self.owner_id: str = owner_id
         self.__balance: int = 0
+        self.__transactions: set[Transaction] = {}
         self.account_status: str = "active"
         self.account_type: str = account_type
         self.created_at: str = datetime.now().strftime("%d-%m-%Y")
 
-    def deposite(self, amount: int):
-        pass
+    def deposite(self, amount: int) -> str:
+        if amount >= 100000:
+            return "too large amount to Deposite ❌"
+        self.__balance += amount
+        new_transaction = Transaction(
+            amount,
+            self.account_type,
+            self.account_number,
+            self.owner_id,
+            "Deposite",
+            self.__balance,
+        )
+
+        return new_transaction.generate_receipt()
 
     def widraw(self, amount: int):
-        pass
+        if amount >= self.__balance:
+            return "inEfficient amount to widraw ❌"
+        self.__balance -= amount
+        new_transaction = Transaction(
+            amount,
+            self.account_type,
+            self.account_number,
+            self.owner_id,
+            "Widraw",
+            self.__balance,
+        )
+
+        return new_transaction.generate_receipt()
 
     def get_balance(self):
         return self.__balance
+
+
+obj1 = Account("sttr", "345jvh34", "saving")
+
+print(obj1.deposite(2000))
+print(obj1.widraw(1000))

@@ -21,7 +21,7 @@ class Bank:
         :return: Confirmation message string.
         """
         self.customers.add(customer)
-        return "new customer added ✅"
+        return f"new customer: {customer.customer_id} added ✅"
 
     def remove_customer(self, customer_id: str) -> str:
         """
@@ -46,7 +46,7 @@ class Bank:
         """
 
         self.employees.add(employee)
-        return "new employee added ✅"
+        return f"new employee {employee.employee_id} added ✅"
 
     def create_account(self, customer_name: str, customer_id: str, ac_type: str) -> str:
         """
