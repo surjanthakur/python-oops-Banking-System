@@ -37,7 +37,7 @@ class Bank:
         self.customers.remove(cstmr)
         return "customer deleted successfully ✅"
 
-    def add_employee(self, employee: Employee):
+    def add_employee(self, employee: Employee) -> str:
         """
         Docstring for add_employee
 
@@ -48,14 +48,14 @@ class Bank:
         self.employees.add(employee)
         return "new employee added ✅"
 
-    def create_account(self, customer_name: str, customer_id: str, ac_type: str):
-        normalized_name = customer_name.strip().lower()
+    def create_account(self, customer_name: str, customer_id: str, ac_type: str) -> str:
 
         account = next(
             (
                 a
                 for a in self.accounts
-                if a.owner.strip().lower() == normalized_name
+                if a.owner.strip().lower()
+                == customer_name  # here the name is also normalized ok
                 and a.owner_id == customer_id
             ),
             None,
@@ -67,13 +67,29 @@ class Bank:
 
         return "account already exist's ❌"
 
-    def remove_account(self, customer_id: str, account_no: int):
-        # verify the customer id and the account number match in the accounts object
-        # if match delete account else:
-        #  return error
-        pass
+    def remove_account(self, customer_id: str, account_no: int) -> str:
+        account = next(
+            (
+                a
+                for a in self.accounts
+                if a.owner_id == customer_id and a.account_number == account_no
+            ),
+            None,
+        )
+        if account is None:
+            return "wrong data try again ❌"
+        self.accounts.remove(account)
+        return "account removed ✅"
 
-    def view_account(self, customer_id: str, account_no: int):
-        # verify the customer id and the account number match in the accounts object
-        # if match return info else error msg
-        pass
+    def view_account(self, customer_id: str, account_no: int) -> Account:
+        account = next(
+            (
+                a
+                for a in self.accounts
+                if a.owner_id == customer_id and a.account_number == account_no
+            ),
+            None,
+        )
+        if account is None:
+            return "wrong data try again ❌"
+        return account
