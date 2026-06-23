@@ -13,7 +13,7 @@ class Bank:
         self.accounts: set[Account] = {}
         self.transactions: set[Transaction] = {}
 
-    def add_customer(self, customer: Customer):
+    def add_customer(self, customer: Customer) -> str:
         """
         Add a new customer to the bank.
 
@@ -23,7 +23,7 @@ class Bank:
         self.customers.add(customer)
         return "new customer added ✅"
 
-    def remove_customer(self, customer_id: str):
+    def remove_customer(self, customer_id: str) -> str:
         """
         Remove a customer by their ID.
 
@@ -96,7 +96,7 @@ class Bank:
         self.accounts.remove(account)
         return "account removed ✅"
 
-    def view_account(self, customer_id: str, account_no: int) -> Account:
+    def view_account(self, customer_id: str, account_no: int):
         """
         Return account information for a given customer and account number.
 
