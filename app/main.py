@@ -26,7 +26,9 @@ def main():
     new_customer = Customer(name, email, phone_no)
     print(new_customer.display_profile())
     print(bank_obj.add_customer(new_customer))
-    account = bank_obj.create_account(name, new_customer.customer_id, account_type)
+    account = bank_obj.create_account(
+        new_customer.name, new_customer.customer_id, account_type
+    )
 
     while True:
         choice_no = display_operations()
