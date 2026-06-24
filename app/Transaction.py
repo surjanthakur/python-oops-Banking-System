@@ -23,11 +23,11 @@ class Transaction:
 
     def generate_receipt(self):
         return f"""
-account_no: {self.account_no}
-account_type: {self.account_type}
-account_owner: {self.owner_id}
-transaction type: {self.transaction_type}
-transaction on date: {self.transaction_date}
-amount is: {self.amount}$
-now current balance is: {self.current_balance}$
+        account_no: {self.account_no}
+        account_type: {self.account_type}
+        account_owner: {self.owner_id}
+        transaction type: {self.transaction_type}
+        transaction on date: {self.transaction_date}
+        amount is: {self.amount}$
+        now current balance is: {self.current_balance}$
 """

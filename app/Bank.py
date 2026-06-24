@@ -10,7 +10,6 @@ class Bank:
     def __init__(self):
         self.customers: set[Customer] = set()
         self.accounts: set[Account] = set()
-        self.transactions: set[Transaction] = set()
 
     def add_customer(self, customer: Customer) -> str:
         """
@@ -31,13 +30,13 @@ class Bank:
         :param ac_type: Account type (e.g. 'savings', 'current').
         :return: Account creation message or error string.
         """
+        normalize_name = customer_name.strip().lower()
 
         account = next(
             (
                 a
                 for a in self.accounts
-                if a.owner.strip().lower()
-                == customer_name  # here the name is also normalized ok
+                if a.owner.strip().lower() == normalize_name
                 and a.owner_id == customer_id
             ),
             None,
