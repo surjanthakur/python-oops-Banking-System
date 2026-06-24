@@ -1,7 +1,5 @@
 from Customer import Customer
-
 from Account import Account
-from Transaction import Transaction
 
 
 class Bank:
@@ -21,7 +19,7 @@ class Bank:
         self.customers.add(customer)
         return f"new customer: {customer.customer_id} added ✅"
 
-    def create_account(self, customer_name: str, customer_id: str, ac_type: str) -> str:
+    def create_account(self, customer_name: str, customer_id: str, ac_type: str):
         """
         Create a new account for a customer if one doesn't already exist.
 
@@ -50,7 +48,8 @@ class Bank:
                 new_account = Account(customer_name, customer_id, ac_type)
                 self.accounts.add(new_account)
                 customer.accounts.add(new_account)
-                return f"new account is created✅  AC-NO: {new_account.account_number}"
+
+                return new_account
 
             return "customer not exist's ❌"
 
@@ -75,7 +74,7 @@ class Bank:
         if account is None:
             return "wrong data try again ❌"
         self.accounts.remove(account)
-        return "account removed ✅"
+        return f"account {account.owner} ,{account.account_number} removed ✅"
 
     def view_personal_account(self, customer_id: str, account_no: int):
         """
@@ -95,4 +94,4 @@ class Bank:
         )
         if account is None:
             return "wrong data try again ❌"
-        return account
+        return f"owner:{account.owner} , id={account.owner_id} , ac_no={account.account_number} , balance={account.get_balance()} , created_at={account.created_at}"

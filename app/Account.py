@@ -39,7 +39,7 @@ class Account:
             amount,
             self.account_type,
             self.account_number,
-            self.owner_id,
+            self.owner,
             "Widraw",
             self.__balance,
         )
