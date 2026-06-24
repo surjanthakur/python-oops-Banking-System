@@ -6,6 +6,7 @@ from uuid import uuid4
 
 class Customer(Person):
 
-    def __init__(self):
+    def __init__(self, name: str, email: str, ph_no: str):
+        super().__init__(name, email, ph_no)
         self.customer_id = str(uuid4())
         self.accounts: set[Account] = {}

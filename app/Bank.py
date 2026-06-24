@@ -1,5 +1,5 @@
 from Customer import Customer
-from Employee import Employee
+
 from Account import Account
 from Transaction import Transaction
 
@@ -9,7 +9,6 @@ class Bank:
 
     def __init__(self):
         self.customers: set[Customer] = set()
-        self.employees: set[Employee] = set()
         self.accounts: set[Account] = set()
         self.transactions: set[Transaction] = set()
 
@@ -22,31 +21,6 @@ class Bank:
         """
         self.customers.add(customer)
         return f"new customer: {customer.customer_id} added ✅"
-
-    def remove_customer(self, customer_id: str) -> str:
-        """
-        Remove a customer by their ID.
-
-        :param customer_id: ID of the customer to remove.
-        :return: Success or error message string.
-        """
-
-        cstmr = next((c for c in self.customers if c.customer_id == customer_id), None)
-        if cstmr is None:
-            return "wrong customer check again ❌"
-        self.customers.remove(cstmr)
-        return "customer deleted successfully ✅"
-
-    def add_employee(self, employee: Employee) -> str:
-        """
-        Add a new employee to the bank.
-
-        :param employee: Employee instance to add.
-        :return: Confirmation message string.
-        """
-
-        self.employees.add(employee)
-        return f"new employee {employee.employee_id} added ✅"
 
     def create_account(self, customer_name: str, customer_id: str, ac_type: str) -> str:
         """
@@ -83,7 +57,7 @@ class Bank:
 
         return "account already exist's ❌"
 
-    def remove_account(self, customer_id: str, account_no: int) -> str:
+    def delete_account(self, customer_id: str, account_no: int) -> str:
         """
         Remove an account belonging to a customer.
 
@@ -104,7 +78,7 @@ class Bank:
         self.accounts.remove(account)
         return "account removed ✅"
 
-    def view_account(self, customer_id: str, account_no: int):
+    def view_personal_account(self, customer_id: str, account_no: int):
         """
         Return account information for a given customer and account number.
 
