@@ -69,9 +69,17 @@ class Bank:
             None,
         )
         if account is None:
-            new_account = Account(customer_name, customer_id, ac_type)
-            self.accounts.add(new_account)
-            return f"new account is created✅  AC-NO: {new_account.account_number}"
+            customer = next(
+                (cust for cust in self.customers if cust.customer_id == customer_id),
+                None,
+            )
+            if customer:
+                new_account = Account(customer_name, customer_id, ac_type)
+                self.accounts.add(new_account)
+                customer.accounts.add(new_account)
+                return f"new account is created✅  AC-NO: {new_account.account_number}"
+
+            return "customer not exist's ❌"
 
         return "account already exist's ❌"
 
