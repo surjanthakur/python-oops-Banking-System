@@ -49,9 +49,3 @@ class Account:
 
     def get_balance(self):
         return self.__balance
-
-
-obj1 = Account("sttr", "345jvh34", "saving")
-
-print(obj1.deposite(2000))
-print(obj1.widraw(1000))
