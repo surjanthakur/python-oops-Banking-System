@@ -11,7 +11,6 @@ def display_operations():
                      press 3 to withraw amount ✅
                      ***************************
                      press 100 to exit ❌
-                     : 
                      
 """))
 
