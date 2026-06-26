@@ -9,7 +9,6 @@ def display_operations():
                      press 5 to remove account ✅
                      press 2 to deposite amount ✅
                      press 3 to withraw amount ✅
-                     ***************************
                      press 100 to exit ❌
 """))
 
