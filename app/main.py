@@ -7,7 +7,7 @@ def display_operations():
     return int(input("""
                      press 4 to view personal account ✅
                      press 5 to remove account ✅
-                     press 2 to deposite amount ✅
+                     press 2 to deposite amount
                      press 3 to withraw amount
                      press 100 to exit ❌
 """))
